@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	.container {
+		position: relative;
+		border: red 1px solid;
+		height: 200px;
+		width: 500px;
+	}
+	.slide{
+		height:100%;
+		position:absolute;
+		max-width:0;
+	}
+	.show{
+		max-width:100%;
+	}
+</style>
+<body>
+
+<a onclick="showNext(-1)">&#10094;</a>
+<a onclick="showNext(1)">&#10095;</a>
+
+
+<div class="container">
+	<img class="slide" src="https://dl.dropboxusercontent.com/u/65639888/image/1.jpg">
+	<img class="slide" src="https://dl.dropboxusercontent.com/u/65639888/image/5.jpg">
+	<img class="slide" src="https://dl.dropboxusercontent.com/u/65639888/image/4.jpg">
+	<img class="slide" src="https://dl.dropboxusercontent.com/u/65639888/image/5.jpg">
+</div>
+
+<span id="index"></span>
+
+
+<script>
+var slideIndex = 1;
+var slide = document.getElementsByClassName("slide");
+var index = document.getElementById("index");
+var slen = slide.length;
+
+index.innerText = slideIndex;
+slide[slideIndex-1].classList.toggle("show");
+
+function showNext(n) {
+	slide[slideIndex-1].classList.toggle("show");
+	slideIndex += n;
+	if (slideIndex > slen) {
+		slideIndex -= slen;
+	}else if(slideIndex < 1){
+		slideIndex += slen;
+	}
+
+	slide[slideIndex-1].classList.toggle("show") 
+	index.innerText=slideIndex;
+}
+</script>
+
+</body>
+</html>
